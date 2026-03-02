@@ -1,7 +1,7 @@
-# LuxeInstalls — Luxury Installation Business Website
+# A-Team Repair Solutions — Installation & Repair Business Website
 
 ## Project Overview
-Full-stack customer-facing web app for LuxeInstalls, a luxury professional installation business serving the Philadelphia metro area. Services include custom builds, cabinetry, lighting, countertops, epoxy, fireplaces, painting, security, TV mounting, and more.
+Full-stack customer-facing web app for A-Team Repair Solutions, a professional installation and repair business serving the Philadelphia metro area. Services structured as outcome-based packages (Mount & Secure, Fixture Refresh, Living Room Upgrade, Bathroom Refresh, Kitchen Surface Upgrade, Custom Feature Wall System) plus a detailed itemized pricing catalog.
 
 ## Architecture
 
@@ -20,14 +20,32 @@ Full-stack customer-facing web app for LuxeInstalls, a luxury professional insta
 - **Font**: Playfair Display for headings (`font-display`), Open Sans for body
 
 ## Pages & Routes
-- `/` — Homepage: hero, stats, services overview, philosophy, gallery preview, testimonials, articles preview, CTA
-- `/services` — Services menu with 10 categories + 3 pricing packages (Essential, Signature, Luxe)
+- `/` — Homepage: hero, stats, services overview (10 package/service tiles), philosophy, gallery preview, testimonials, articles preview, CTA
+- `/services` — 6 outcome packages + 8-category itemized pricing catalog + "Why Packages?" section
 - `/gallery` — Before/after gallery with category filter and lightbox
 - `/articles` — SEO articles with search and category filter
 - `/articles/:slug` — Individual article detail with related articles
 - `/show-my-space` — Lead capture form (name, email, phone, service, space description)
 - `/schedule` — Video estimate booking form (Google Meet based)
 - `/visualizer` — AI Space Visualizer (OpenAI image generation "Fun Magnet")
+
+## Service Packages (6 Outcome-Based)
+1. **Mount & Secure** — $175–$325 (Fast Cash tier)
+2. **Fixture Refresh** — $350–$650 (Fast Cash tier)
+3. **Living Room Upgrade** — $850–$1,800 (Mid-Ticket tier)
+4. **Bathroom Refresh** — $1,200–$2,500 (Mid-Ticket tier)
+5. **Kitchen Surface Upgrade** — $2,000–$5,000 (Premium tier)
+6. **Custom Feature Wall System** — $2,800–$6,500+ (Premium tier)
+
+## Itemized Pricing Catalog (8 Categories)
+- Drywall & Wall Finishes (DW-A/B/D)
+- Lighting & Electrical Systems (LG-A/B/C)
+- Built-In & Feature Walls (BI-A/B/C)
+- Bathrooms & Luxury Installs (BR-A/B/C)
+- Epoxy & Specialty Surfaces (EP-A/B/C)
+- Painting & Creative Walls (PW-A/B/C)
+- Assembly & Setup (AS-A/B/C)
+- Hauling & Exterior (HE-A/B/C)
 
 ## Key Files
 - `client/src/App.tsx` — Main router with all page routes
@@ -68,6 +86,5 @@ Located at `client/public/images/`:
 
 ## Business Info
 - **Phone**: (215) 555-0100
-- **Service Area**: Philadelphia, Main Line, Montgomery County, Delaware County, Bucks County, South Jersey
+- **Service Area**: Philadelphia, NE Philly, Bucks County, Montgomery County, Delaware County
 - **Video Estimates**: Google Meet (placeholder: https://meet.google.com/new)
-- **Packages**: Essential ($299+), Signature ($799+), Luxe (custom)

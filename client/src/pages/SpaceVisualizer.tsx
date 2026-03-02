@@ -11,18 +11,18 @@ import { Zap, Upload, Sparkles, RefreshCcw, Download, ImageIcon } from "lucide-r
 import { useToast } from "@/hooks/use-toast";
 
 const services = [
-  "Custom Built-In Cabinetry",
+  "TV Mounting & Cable Concealment",
+  "Fixture Refresh (Lights & Fans)",
+  "Living Room Upgrade (Full Transformation)",
+  "Bathroom Refresh (Vanity, Toilet, Lighting)",
+  "Kitchen Surface Upgrade (Epoxy, Backsplash)",
+  "Custom Feature Wall & Fireplace",
   "Accent Wall with LED Lighting",
-  "Granite Countertop Installation",
-  "Metallic Epoxy Floor",
-  "Chandelier Installation",
-  "Custom Fireplace Surround",
-  "TV Wall Mounting & Wire Hiding",
   "Full Room Paint & Refresh",
-  "Security Camera Setup",
-  "Large Mirror Installation",
-  "Custom Shelving System",
-  "Onyx Countertop Feature",
+  "Built-In Shelving System",
+  "Drywall Patch & Finish",
+  "Epoxy Countertop or Floor",
+  "Furniture Assembly & Setup",
 ];
 
 interface VisualizationResult {
@@ -77,7 +77,7 @@ export default function SpaceVisualizer() {
     if (!result?.imageUrl) return;
     const a = document.createElement("a");
     a.href = result.imageUrl;
-    a.download = "luxeinstalls-visualization.png";
+    a.download = "ateam-repair-visualization.png";
     a.click();
   };
 

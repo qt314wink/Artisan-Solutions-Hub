@@ -19,16 +19,16 @@ const navLinks = [
 ];
 
 const services = [
-  { icon: Layers, label: "Custom Builds & Cabinetry", desc: "Floor-to-ceiling custom installations crafted to perfection" },
-  { icon: Lightbulb, label: "Inlaid & Recessed Lighting", desc: "Chandeliers, LED channels, and smart lighting systems" },
-  { icon: Wrench, label: "Countertops", desc: "Granite, quartz, onyx, and marble — supply and install" },
-  { icon: PaintBucket, label: "Painting & Accent Walls", desc: "Custom art walls, epoxy, textured finishes" },
-  { icon: Flame, label: "Fireplace Installation", desc: "Gas, electric, and custom fireplace surrounds" },
-  { icon: Shield, label: "Security Systems", desc: "Camera installation, smart home integrations" },
-  { icon: Camera, label: "TV & Display Mounting", desc: "Wire-hiding, built-in media centers" },
-  { icon: Sofa, label: "Furniture Assembly", desc: "White glove assembly and space setup" },
-  { icon: Zap, label: "Electrical Upgrades", desc: "Outlet upgrades, panel work, ceiling fans" },
-  { icon: LayoutGrid, label: "Drywall & Hanging", desc: "Large mirrors, artwork, shelving systems" },
+  { icon: Camera, label: "Mount & Secure", desc: "TV mounting, cable concealment, shelf & soundbar installs" },
+  { icon: Lightbulb, label: "Fixture Refresh", desc: "Light fixtures, ceiling fans, vanity lights — room-level upgrades" },
+  { icon: Sofa, label: "Living Room Upgrade", desc: "TV mount, built-ins, accent lighting, wall finishing — one visit" },
+  { icon: Layers, label: "Bathroom Refresh", desc: "Vanity, toilet, mirror & lighting upgrade — feels like renovation" },
+  { icon: Wrench, label: "Kitchen Surface Upgrade", desc: "Epoxy countertops, backsplash, under-cabinet lighting" },
+  { icon: Flame, label: "Custom Feature Wall", desc: "Feature wall, electric fireplace, integrated lighting, trim" },
+  { icon: PaintBucket, label: "Painting & Creative Walls", desc: "Full rooms, accent walls, murals, wallpaper" },
+  { icon: LayoutGrid, label: "Drywall & Wall Finishes", desc: "Patches, restoration, architectural texture & detail" },
+  { icon: Zap, label: "Assembly & Setup", desc: "Furniture assembly, cabinet install, floor install" },
+  { icon: Shield, label: "Hauling & Exterior", desc: "Junk removal, power washing, deck staining" },
 ];
 
 const stats = [
@@ -73,15 +73,15 @@ export default function Home() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/40 bg-gold/10 mb-8">
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" style={{ backgroundColor: "#C9A84C" }} />
-            <span className="text-sm font-medium" style={{ color: "#C9A84C" }}>Philadelphia's Premier Luxury Installers</span>
+            <span className="text-sm font-medium" style={{ color: "#C9A84C" }}>Philadelphia's Premier Installation Team</span>
           </div>
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-            Where Craftsmanship
+            Fast, Professional
             <br />
-            <span style={{ color: "#C9A84C" }}>Meets Luxury</span>
+            <span style={{ color: "#C9A84C" }}>Results You Can See</span>
           </h1>
           <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-            From custom builds and countertops to lighting, fireplaces, and epoxy floors — we transform Philadelphia-area homes into the spaces you've always envisioned.
+            From TV mounting and lighting to feature walls, epoxy floors, and full bathroom refreshes — we deliver finished outcomes, not task lists. Serving the PHL metro area.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/schedule">
@@ -171,15 +171,15 @@ export default function Home() {
                 Our Philosophy
               </Badge>
               <h2 className="font-display text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                We Don't Just Install.
+                We Don't Sell Tasks.
                 <br />
-                <span style={{ color: "#C9A84C" }}>We Transform.</span>
+                <span style={{ color: "#C9A84C" }}>We Sell Outcomes.</span>
               </h2>
               <p className="text-white/75 text-lg leading-relaxed mb-6">
-                Every project we take on is treated as if it were our own home. We combine decades of skilled-trade expertise with an eye for luxury design — because we believe the places you live and work should inspire you every single day.
+                Nobody wakes up wanting "drywall patching." You want a finished room. A mounted TV that looks intentional. A bathroom that feels upgraded. We bundle skilled labor around the results you actually care about.
               </p>
               <p className="text-white/75 text-lg leading-relaxed mb-8">
-                We serve the Philadelphia metro area including the Main Line, Center City, South Jersey, Delaware County, Montgomery County, and Bucks County. Our clients choose us once and call us for everything after.
+                Union-trained craftsmanship serving the PHL metro — Philadelphia, Bucks County, Montgomery County, and surrounding areas. Our clients book us once and call us for everything after.
               </p>
               <div className="flex flex-col gap-3">
                 {["Licensed & insured professionals", "White glove service — we clean up after every job", "Transparent pricing, no surprises", "Satisfaction guaranteed on every project"].map((item) => (
@@ -363,10 +363,10 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="md:col-span-2">
               <span className="font-display text-xl font-bold text-white">
-                Luxe<span style={{ color: "#C9A84C" }}>Installs</span>
+                A-Team<span style={{ color: "#C9A84C" }}> Repair Solutions</span>
               </span>
               <p className="text-white/50 text-sm mt-3 leading-relaxed max-w-xs">
-                Philadelphia's premier luxury installation team. Serving the metro area and surrounding counties with excellence.
+                Philadelphia's premier installation and repair team. Serving the PHL metro, Bucks County, and Montgomery County.
               </p>
               <a href="tel:+12155550100" className="text-sm mt-4 block" style={{ color: "#C9A84C" }}>(215) 555-0100</a>
             </div>
@@ -386,16 +386,16 @@ export default function Home() {
               <h4 className="text-white/80 font-semibold text-sm mb-4">Service Areas</h4>
               <ul className="space-y-2 text-white/50 text-sm">
                 <li>Philadelphia</li>
-                <li>Main Line (Ardmore, Bryn Mawr, Wayne)</li>
+                <li>NE Philly</li>
+                <li>Bucks County</li>
                 <li>Montgomery County</li>
                 <li>Delaware County</li>
-                <li>Bucks County</li>
-                <li>South Jersey</li>
+                <li>Surrounding PHL Metro</li>
               </ul>
             </div>
           </div>
           <div className="pt-8 border-t border-white/10 text-center text-white/30 text-xs">
-            © 2026 LuxeInstalls. All rights reserved. Licensed & Insured in Pennsylvania & New Jersey.
+            © 2026 A-Team Repair Solutions. All rights reserved. Licensed & Insured in Pennsylvania & New Jersey.
           </div>
         </div>
       </footer>

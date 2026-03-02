@@ -26,16 +26,18 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 const services = [
-  "Custom Builds & Cabinetry",
+  "Mount & Secure Package ($175–$325)",
+  "Fixture Refresh Package ($350–$650)",
+  "Living Room Upgrade ($850–$1,800)",
+  "Bathroom Refresh ($1,200–$2,500)",
+  "Kitchen Surface Upgrade ($2,000–$5,000)",
+  "Custom Feature Wall ($2,800–$6,500+)",
+  "Drywall & Wall Finishes",
   "Lighting & Electrical",
-  "Countertops & Stone",
-  "Painting & Accent Walls",
-  "Flooring & Epoxy",
-  "Fireplaces",
-  "TV & Display Mounting",
-  "Plumbing & Appliances",
-  "Security & Smart Home",
-  "Hanging & Assembly",
+  "Epoxy & Specialty Surfaces",
+  "Painting & Creative Walls",
+  "Assembly & Setup",
+  "Hauling & Exterior",
   "Multiple Services",
   "Not Sure / General Inquiry",
 ];
