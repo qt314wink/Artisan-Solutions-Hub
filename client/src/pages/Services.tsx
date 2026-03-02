@@ -429,7 +429,7 @@ export default function Services() {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
-            <a href="sms:+12155550100?body=Hi! I'd like a quote. Here's my project:">
+            <a href="sms:+12153034494?body=Hi! I'd like a quote. Here's my project:">
               <Button
                 size="lg"
                 variant="outline"

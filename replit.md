@@ -85,6 +85,6 @@ Located at `client/public/images/`:
 - `gallery-1-before/after.png` through `gallery-5-after.png`
 
 ## Business Info
-- **Phone**: (215) 555-0100
+- **Phone**: (215) 303-4494
 - **Service Area**: Philadelphia, NE Philly, Bucks County, Montgomery County, Delaware County
 - **Video Estimates**: Google Meet (placeholder: https://meet.google.com/new)

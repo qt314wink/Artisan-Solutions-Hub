@@ -205,7 +205,7 @@ export default function Schedule() {
                       <FormItem>
                         <FormLabel>Phone Number *</FormLabel>
                         <FormControl>
-                          <Input placeholder="(215) 555-0100" type="tel" {...field} data-testid="input-schedule-phone" />
+                          <Input placeholder="(215) 303-4494" type="tel" {...field} data-testid="input-schedule-phone" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

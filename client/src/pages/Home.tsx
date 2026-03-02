@@ -368,7 +368,7 @@ export default function Home() {
               <p className="text-white/50 text-sm mt-3 leading-relaxed max-w-xs">
                 Philadelphia's premier installation and repair team. Serving the PHL metro, Bucks County, and Montgomery County.
               </p>
-              <a href="tel:+12155550100" className="text-sm mt-4 block" style={{ color: "#C9A84C" }}>(215) 555-0100</a>
+              <a href="tel:+12153034494" className="text-sm mt-4 block" style={{ color: "#C9A84C" }}>(215) 303-4494</a>
             </div>
             <div>
               <h4 className="text-white/80 font-semibold text-sm mb-4">Quick Links</h4>

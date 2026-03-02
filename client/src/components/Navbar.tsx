@@ -65,12 +65,12 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+12155550100"
+              href="tel:+12153034494"
               className="flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white transition-colors"
               data-testid="link-phone"
             >
               <Phone className="w-4 h-4" style={{ color: "#C9A84C" }} />
-              (215) 555-0100
+              (215) 303-4494
             </a>
             <Link href="/schedule">
               <Button
@@ -125,11 +125,11 @@ export default function Navbar() {
                 </nav>
                 <div className="pt-6 border-t border-white/10 flex flex-col gap-3">
                   <a
-                    href="tel:+12155550100"
+                    href="tel:+12153034494"
                     className="flex items-center gap-2 text-sm text-white/80"
                   >
                     <Phone className="w-4 h-4" style={{ color: "#C9A84C" }} />
-                    (215) 555-0100
+                    (215) 303-4494
                   </a>
                   <Link href="/schedule">
                     <Button

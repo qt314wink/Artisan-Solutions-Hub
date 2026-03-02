@@ -86,8 +86,8 @@ export default function ShowMySpace() {
           </p>
           <div className="p-6 rounded-lg bg-charcoal-dark text-white text-left">
             <p className="text-white/70 text-sm mb-3">Need to reach us sooner?</p>
-            <a href="tel:+12155550100" className="font-bold text-lg block" style={{ color: "#C9A84C" }}>
-              (215) 555-0100
+            <a href="tel:+12153034494" className="font-bold text-lg block" style={{ color: "#C9A84C" }}>
+              (215) 303-4494
             </a>
           </div>
         </div>
@@ -139,12 +139,12 @@ export default function ShowMySpace() {
                 <h3 className="font-semibold text-white mb-2">Prefer to call?</h3>
                 <p className="text-white/60 text-sm mb-4">Our team answers 7 days a week, 8am–8pm.</p>
                 <a
-                  href="tel:+12155550100"
+                  href="tel:+12153034494"
                   className="font-bold text-xl block"
                   style={{ color: "#C9A84C" }}
                   data-testid="link-phone-show-space"
                 >
-                  (215) 555-0100
+                  (215) 303-4494
                 </a>
               </Card>
             </div>
@@ -180,7 +180,7 @@ export default function ShowMySpace() {
                           <FormItem>
                             <FormLabel>Phone Number *</FormLabel>
                             <FormControl>
-                              <Input placeholder="(215) 555-0100" type="tel" {...field} data-testid="input-phone" />
+                              <Input placeholder="(215) 303-4494" type="tel" {...field} data-testid="input-phone" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
