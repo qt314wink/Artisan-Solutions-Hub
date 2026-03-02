@@ -7,7 +7,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { GalleryItem } from "@shared/schema";
 
-const categories = ["All", "Countertops", "Lighting & Walls", "Epoxy & Flooring", "Lighting & Fixtures", "Custom Builds"];
+const categories = ["All", "Custom Builds", "Countertops", "Lighting & Walls", "Epoxy & Flooring", "Lighting & Fixtures"];
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
