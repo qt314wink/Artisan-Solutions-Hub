@@ -16,6 +16,7 @@ function PanoramicCard({ item, onClick }: { item: GalleryItem; onClick: () => vo
   const [hover, setHover] = useState(false);
   const [pos, setPos] = useState({ x: 0.5, y: 0.5 });
   const isTouchDevice = typeof window !== "undefined" && "ontouchstart" in window;
+  const isShowcase = item.beforeImage === item.afterImage;
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -27,6 +28,67 @@ function PanoramicCard({ item, onClick }: { item: GalleryItem; onClick: () => vo
 
   const rotateY = hover ? (pos.x - 0.5) * 12 : 0;
   const rotateX = hover ? -(pos.y - 0.5) * 8 : 0;
+
+  if (isShowcase) {
+    return (
+      <div
+        ref={cardRef}
+        role="button"
+        tabIndex={0}
+        className="group rounded-lg overflow-hidden border border-border bg-card cursor-pointer"
+        style={{ perspective: "800px" }}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => { setHover(false); setPos({ x: 0.5, y: 0.5 }); }}
+        onClick={(e) => { e.stopPropagation(); onClick(); }}
+        onTouchEnd={(e) => { e.preventDefault(); onClick(); }}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(); } }}
+        data-testid={`gallery-item-${item.id}`}
+      >
+        <div
+          className="relative aspect-[4/3] overflow-hidden"
+          style={{
+            transform: `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${hover ? 1.02 : 1})`,
+            transition: hover ? "transform 0.15s ease-out" : "transform 0.4s ease-out",
+            transformStyle: "preserve-3d",
+          }}
+        >
+          <img
+            src={item.afterImage}
+            alt={`${item.title} — professional installation in Philadelphia`}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+            draggable={false}
+          />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%)",
+              transition: "background 0.3s",
+            }}
+          />
+          <div className="absolute bottom-0 left-0 right-0 p-4 z-10 pointer-events-none">
+            <Badge className="text-xs mb-2" style={{ background: "rgba(201,168,76,0.9)", color: "#1C1C1E" }}>
+              {item.category}
+            </Badge>
+            <p className="text-white text-sm font-medium drop-shadow-lg">
+              {isTouchDevice ? "Tap to view portfolio details" : "Click to view full details"}
+            </p>
+          </div>
+          <div className="absolute top-3 right-3 px-2 py-1 rounded text-xs font-bold text-white transition-all duration-200" style={{ background: "rgba(201,168,76,0.85)" }}>
+            PORTFOLIO
+          </div>
+        </div>
+        <div className="p-4">
+          <h3 className="font-semibold text-foreground">{item.title}</h3>
+          {item.description && (
+            <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{item.description}</p>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   const beforeOpacity = hover ? Math.max(0, 1 - pos.x * 2) : 0;
   const afterOpacity = hover ? Math.max(0, (pos.x - 0.5) * 2) : 1;
   const midBlend = hover ? 1 - Math.abs(pos.x - 0.5) * 2 : 0;
@@ -243,95 +305,121 @@ export default function Gallery() {
         <DialogContent className="max-w-5xl bg-charcoal-dark border-white/10 p-0 overflow-hidden" aria-describedby={undefined}>
           {selected && (
             <div>
-              <DialogTitle className="sr-only">{selected.title} — Before & After Comparison</DialogTitle>
-              <div className="flex gap-2 justify-center pt-4 pb-2">
-                <button
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-colors ${!showAfter ? "text-charcoal-dark" : "bg-white/10 text-white"}`}
-                  style={!showAfter ? { background: "#C9A84C" } : {}}
-                  onClick={() => setShowAfter(false)}
-                  data-testid="toggle-before"
-                >
-                  BEFORE
-                </button>
-                <button
-                  className="px-4 py-1.5 rounded-full text-xs font-bold bg-white/10 text-white"
-                  style={{ background: showAfter ? "transparent" : undefined, border: "1px solid rgba(201,168,76,0.5)", color: "#C9A84C" }}
-                  onClick={() => { setShowAfter(true); setSliderPos(50); }}
-                  data-testid="toggle-compare"
-                >
-                  COMPARE
-                </button>
-                <button
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-colors ${showAfter ? "text-charcoal-dark" : "bg-white/10 text-white"}`}
-                  style={showAfter ? { background: "#C9A84C" } : {}}
-                  onClick={() => setShowAfter(true)}
-                  data-testid="toggle-after"
-                >
-                  AFTER
-                </button>
-              </div>
+              <DialogTitle className="sr-only">{selected.title} — {selected.beforeImage === selected.afterImage ? "Portfolio Showcase" : "Before & After Comparison"}</DialogTitle>
 
-              <div
-                ref={sliderRef}
-                className="relative aspect-video overflow-hidden cursor-col-resize select-none mx-4 rounded-lg"
-                onMouseDown={(e) => { dragging.current = true; handleSliderInteraction(e); }}
-                onMouseMove={(e) => { if (dragging.current) handleSliderInteraction(e); }}
-                onMouseUp={() => { dragging.current = false; }}
-                onMouseLeave={() => { dragging.current = false; }}
-                onTouchStart={(e) => { dragging.current = true; handleSliderInteraction(e); }}
-                onTouchMove={(e) => { if (dragging.current) handleSliderInteraction(e); }}
-                onTouchEnd={() => { dragging.current = false; }}
-                data-testid="comparison-slider"
-              >
-                <img
-                  src={selected.afterImage}
-                  alt="After"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  draggable={false}
-                />
-                <div
-                  className="absolute inset-0 overflow-hidden"
-                  style={{ width: `${sliderPos}%` }}
-                >
-                  <img
-                    src={selected.beforeImage}
-                    alt="Before"
-                    className="absolute inset-0 h-full object-cover"
-                    style={{ width: sliderRef.current ? `${sliderRef.current.offsetWidth}px` : "100vw", maxWidth: "none" }}
-                    draggable={false}
-                  />
-                </div>
-
-                <div
-                  className="absolute top-0 bottom-0 z-20"
-                  style={{ left: `${sliderPos}%`, transform: "translateX(-50%)" }}
-                >
-                  <div className="w-0.5 h-full" style={{ background: "#C9A84C" }} />
-                  <div
-                    className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-2"
-                    style={{ background: "#C9A84C", borderColor: "#1C1C1E" }}
-                  >
-                    <ChevronLeft className="w-3 h-3 text-charcoal-dark -mr-0.5" />
-                    <ChevronRight className="w-3 h-3 text-charcoal-dark -ml-0.5" />
+              {selected.beforeImage === selected.afterImage ? (
+                <>
+                  <div className="relative aspect-video overflow-hidden mx-4 mt-4 rounded-lg">
+                    <img
+                      src={selected.afterImage}
+                      alt={selected.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      draggable={false}
+                    />
+                    <div className="absolute top-3 right-3 px-3 py-1.5 rounded text-xs font-bold" style={{ background: "rgba(201,168,76,0.9)", color: "#1C1C1E" }}>
+                      PORTFOLIO
+                    </div>
                   </div>
-                </div>
+                  <div className="p-6">
+                    <Badge style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C" }} className="mb-3">{selected.category}</Badge>
+                    <h2 className="font-display text-2xl font-bold text-white mb-2">{selected.title}</h2>
+                    {selected.description && (
+                      <p className="text-white/60 text-sm leading-relaxed">{selected.description}</p>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex gap-2 justify-center pt-4 pb-2">
+                    <button
+                      className={`px-4 py-1.5 rounded-full text-xs font-bold transition-colors ${!showAfter ? "text-charcoal-dark" : "bg-white/10 text-white"}`}
+                      style={!showAfter ? { background: "#C9A84C" } : {}}
+                      onClick={() => setShowAfter(false)}
+                      data-testid="toggle-before"
+                    >
+                      BEFORE
+                    </button>
+                    <button
+                      className="px-4 py-1.5 rounded-full text-xs font-bold bg-white/10 text-white"
+                      style={{ background: showAfter ? "transparent" : undefined, border: "1px solid rgba(201,168,76,0.5)", color: "#C9A84C" }}
+                      onClick={() => { setShowAfter(true); setSliderPos(50); }}
+                      data-testid="toggle-compare"
+                    >
+                      COMPARE
+                    </button>
+                    <button
+                      className={`px-4 py-1.5 rounded-full text-xs font-bold transition-colors ${showAfter ? "text-charcoal-dark" : "bg-white/10 text-white"}`}
+                      style={showAfter ? { background: "#C9A84C" } : {}}
+                      onClick={() => setShowAfter(true)}
+                      data-testid="toggle-after"
+                    >
+                      AFTER
+                    </button>
+                  </div>
 
-                <div className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-bold text-white bg-red-600/80">
-                  BEFORE
-                </div>
-                <div className="absolute top-3 right-3 px-2 py-1 rounded text-xs font-bold text-white bg-emerald-600/80">
-                  AFTER
-                </div>
-              </div>
+                  <div
+                    ref={sliderRef}
+                    className="relative aspect-video overflow-hidden cursor-col-resize select-none mx-4 rounded-lg"
+                    onMouseDown={(e) => { dragging.current = true; handleSliderInteraction(e); }}
+                    onMouseMove={(e) => { if (dragging.current) handleSliderInteraction(e); }}
+                    onMouseUp={() => { dragging.current = false; }}
+                    onMouseLeave={() => { dragging.current = false; }}
+                    onTouchStart={(e) => { dragging.current = true; handleSliderInteraction(e); }}
+                    onTouchMove={(e) => { if (dragging.current) handleSliderInteraction(e); }}
+                    onTouchEnd={() => { dragging.current = false; }}
+                    data-testid="comparison-slider"
+                  >
+                    <img
+                      src={selected.afterImage}
+                      alt="After"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      draggable={false}
+                    />
+                    <div
+                      className="absolute inset-0 overflow-hidden"
+                      style={{ width: `${sliderPos}%` }}
+                    >
+                      <img
+                        src={selected.beforeImage}
+                        alt="Before"
+                        className="absolute inset-0 h-full object-cover"
+                        style={{ width: sliderRef.current ? `${sliderRef.current.offsetWidth}px` : "100vw", maxWidth: "none" }}
+                        draggable={false}
+                      />
+                    </div>
 
-              <div className="p-6">
-                <Badge style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C" }} className="mb-3">{selected.category}</Badge>
-                <h2 className="font-display text-2xl font-bold text-white mb-2">{selected.title}</h2>
-                {selected.description && (
-                  <p className="text-white/60 text-sm leading-relaxed">{selected.description}</p>
-                )}
-                <p className="text-white/30 text-xs mt-3">Drag the slider left and right to compare before & after</p>
-              </div>
+                    <div
+                      className="absolute top-0 bottom-0 z-20"
+                      style={{ left: `${sliderPos}%`, transform: "translateX(-50%)" }}
+                    >
+                      <div className="w-0.5 h-full" style={{ background: "#C9A84C" }} />
+                      <div
+                        className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-2"
+                        style={{ background: "#C9A84C", borderColor: "#1C1C1E" }}
+                      >
+                        <ChevronLeft className="w-3 h-3 text-charcoal-dark -mr-0.5" />
+                        <ChevronRight className="w-3 h-3 text-charcoal-dark -ml-0.5" />
+                      </div>
+                    </div>
+
+                    <div className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-bold text-white bg-red-600/80">
+                      BEFORE
+                    </div>
+                    <div className="absolute top-3 right-3 px-2 py-1 rounded text-xs font-bold text-white bg-emerald-600/80">
+                      AFTER
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <Badge style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C" }} className="mb-3">{selected.category}</Badge>
+                    <h2 className="font-display text-2xl font-bold text-white mb-2">{selected.title}</h2>
+                    {selected.description && (
+                      <p className="text-white/60 text-sm leading-relaxed">{selected.description}</p>
+                    )}
+                    <p className="text-white/30 text-xs mt-3">Drag the slider left and right to compare before & after</p>
+                  </div>
+                </>
+              )}
             </div>
           )}
         </DialogContent>

@@ -95,10 +95,29 @@ Uses Replit AI Integrations for OpenAI (no user API key needed — billed to Rep
 - Text: `gpt-5.2` model for space visualization descriptions
 - Image: `gpt-image-1` model for concept renders
 
-## Gallery Images
-Located at `client/public/images/`:
-- `hero-bg.png` — Homepage hero background
-- `gallery-1-before/after.png` through `gallery-5-after.png`
+## Gallery System
+Located at `client/public/images/`. Gallery items support two modes:
+- **Before/After pairs**: `beforeImage !== afterImage` — PanoramicCard shows hover comparison effect, dialog shows BEFORE/COMPARE/AFTER slider
+- **Portfolio Showcase**: `beforeImage === afterImage` — Single image with PORTFOLIO badge, no fake comparison
+
+### Verified Before/After Pairs (20 items)
+Each pair shares the same room with 2+ visual anchors proving continuity:
+- Navy bathroom: `bathroom-before-gutted/demo` → `bathroom-after-shower/vanity`
+- Tile shower: `shower-before-pan` → `shower-after-tile/tile-2` (same niche, same hex floor)
+- Feature walls: `featurewall-before-framing` → `featurewall-after-complete`
+- LVP flooring: `flooring-before-hardwood` → `flooring-after-lvp`
+- Entertainment center: `entertainment-before-tvmount` → `gallery-5-after`
+- Onyx installs: `onyx-led-panels`/`led-panel-closeup` → `onyx-fireplace/bar/countertop`
+- Kitchen countertop: `kitchen-countertop-install` → `onyx-island-lit`/`kitchen-quartz-wide`
+- Brick powder room: `brick-powder-room-before` → `brick-powder-room-after` (same exposed brick)
+- Stock pairs: `gallery-1/2/3/4-before` → `gallery-1/2/3/4-after`
+
+### Portfolio Showcase Items (5 items)
+Beautiful finished work without real before photos — shown honestly without fake comparisons:
+- Farmhouse bathroom (vanity, shower glass)
+- Luxury marble spa (body jets)
+- Spa bathroom (walk-in shower)
+- White shaker kitchen remodel
 
 ## Business Info
 - **Phone**: (215) 303-4494
