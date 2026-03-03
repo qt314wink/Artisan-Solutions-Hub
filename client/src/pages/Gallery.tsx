@@ -15,6 +15,7 @@ function PanoramicCard({ item, onClick }: { item: GalleryItem; onClick: () => vo
   const cardRef = useRef<HTMLDivElement>(null);
   const [hover, setHover] = useState(false);
   const [pos, setPos] = useState({ x: 0.5, y: 0.5 });
+  const isTouchDevice = typeof window !== "undefined" && "ontouchstart" in window;
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -35,12 +36,16 @@ function PanoramicCard({ item, onClick }: { item: GalleryItem; onClick: () => vo
   return (
     <div
       ref={cardRef}
+      role="button"
+      tabIndex={0}
       className="group rounded-lg overflow-hidden border border-border bg-card cursor-pointer"
       style={{ perspective: "800px" }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => { setHover(false); setPos({ x: 0.5, y: 0.5 }); }}
-      onClick={onClick}
+      onClick={(e) => { e.stopPropagation(); onClick(); }}
+      onTouchEnd={(e) => { e.preventDefault(); onClick(); }}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(); } }}
       data-testid={`gallery-item-${item.id}`}
     >
       <div
@@ -84,12 +89,12 @@ function PanoramicCard({ item, onClick }: { item: GalleryItem; onClick: () => vo
           }}
         />
 
-        <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
+        <div className="absolute bottom-0 left-0 right-0 p-4 z-10 pointer-events-none">
           <Badge className="text-xs mb-2" style={{ background: "rgba(201,168,76,0.9)", color: "#1C1C1E" }}>
             {item.category}
           </Badge>
           <p className="text-white text-sm font-medium drop-shadow-lg">
-            {hover ? "Slide mouse left \u2190 right to compare" : "Hover to explore Before & After"}
+            {isTouchDevice ? "Tap to open Before & After comparison" : hover ? "Slide mouse left \u2190 right to compare" : "Hover to explore Before & After"}
           </p>
         </div>
 
@@ -97,7 +102,16 @@ function PanoramicCard({ item, onClick }: { item: GalleryItem; onClick: () => vo
           {labelText}
         </div>
 
-        {hover && (
+        {isTouchDevice && (
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2" style={{ background: "rgba(201,168,76,0.85)", borderColor: "#1C1C1E" }}>
+              <ChevronLeft className="w-4 h-4 text-charcoal-dark -mr-1" />
+              <ChevronRight className="w-4 h-4 text-charcoal-dark -ml-1" />
+            </div>
+          </div>
+        )}
+
+        {hover && !isTouchDevice && (
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10">
             <div className="flex items-center gap-1">
               <div className="h-1 rounded-full bg-white/20" style={{ width: "80px" }}>
