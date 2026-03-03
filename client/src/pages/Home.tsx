@@ -20,16 +20,16 @@ const navLinks = [
 ];
 
 const services = [
-  { icon: Camera, label: "Mount & Secure", desc: "TV mounting, cable concealment, shelf & soundbar installs" },
-  { icon: Lightbulb, label: "Fixture Refresh", desc: "Light fixtures, ceiling fans, vanity lights — room-level upgrades" },
-  { icon: Sofa, label: "Living Room Upgrade", desc: "TV mount, built-ins, accent lighting, wall finishing — one visit" },
-  { icon: Layers, label: "Bathroom Refresh", desc: "Vanity, toilet, mirror & lighting upgrade — feels like renovation" },
-  { icon: Wrench, label: "Kitchen Surface Upgrade", desc: "Epoxy countertops, backsplash, under-cabinet lighting" },
-  { icon: Flame, label: "Custom Feature Wall", desc: "Feature wall, electric fireplace, integrated lighting, trim" },
-  { icon: PaintBucket, label: "Painting & Creative Walls", desc: "Full rooms, accent walls, murals, wallpaper" },
-  { icon: LayoutGrid, label: "Drywall & Wall Finishes", desc: "Patches, restoration, architectural texture & detail" },
-  { icon: Zap, label: "Assembly & Setup", desc: "Furniture assembly, cabinet install, floor install" },
-  { icon: Shield, label: "Hauling & Exterior", desc: "Junk removal, power washing, deck staining" },
+  { icon: Camera, label: "Moving Day Setup", desc: "Packing, unpacking, furniture assembly — livable on day one" },
+  { icon: Lightbulb, label: "Lighting & Electrical", desc: "Fixtures, outlets, fans, under-cabinet & accent LED lighting" },
+  { icon: Sofa, label: "Entertainment & Sound", desc: "TV mount, surround sound, built-ins, smart home integration" },
+  { icon: Layers, label: "Bathroom Renovation", desc: "Faucets, showerheads, tile, glass doors, jets, full gut renos" },
+  { icon: Wrench, label: "Kitchen Transformation", desc: "Countertops, cabinetry, islands, backsplash, epoxy & stone" },
+  { icon: Flame, label: "Basement Conversion", desc: "Turn unfinished space into bedroom, office, gym, or lounge" },
+  { icon: PaintBucket, label: "Paint, Floors & Walls", desc: "Paint, wallpaper removal, floor sanding, carpet steaming, LVP" },
+  { icon: LayoutGrid, label: "Custom Tile & Stone", desc: "Subway, mosaic, brick, marble, granite, reclaimed wood" },
+  { icon: Zap, label: "Windows & Blinds", desc: "Blinds, shutters, awnings, window boxes & replacement" },
+  { icon: Shield, label: "Built-Ins & Cabinetry", desc: "Organization, shelving, entertainment centers, custom storage" },
 ];
 
 const stats = [

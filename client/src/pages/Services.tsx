@@ -2,193 +2,236 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, ArrowRight, Star, Video, Tv, Lightbulb, Sofa, Bath, Flame, Layers, Home, ChevronRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, Star, Video, Tv, Lightbulb, Sofa, Bath, Flame, Layers, Home, ChevronRight, PackageOpen, Dumbbell, Monitor, Hammer, PaintBucket, Blinds } from "lucide-react";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const packages = [
   {
-    name: "Mount & Secure",
-    icon: Tv,
-    price: "$175–$325",
+    name: "Moving Day Peace of Mind",
+    icon: PackageOpen,
+    price: "$300–$800",
     tier: "fast",
-    description: "High-demand, low-friction. Get your entertainment setup done right — clean, professional, and fully concealed.",
+    description: "Take the stress out of moving. We handle the heavy lifting — packing, unpacking, furniture assembly, and getting your new place set up and livable on day one.",
     includes: [
-      "TV mounting (standard walls)",
-      "Basic cable concealment",
-      "Shelf or soundbar mounting",
+      "Packing & unpacking coordination",
+      "Furniture assembly (beds, desks, shelving)",
+      "TV mounting & basic cable concealment",
+      "Outlet & fixture quick-checks",
     ],
     upgrades: [
-      "$75 — In-wall cord concealment",
-      "$50 — Outlet relocation",
+      "$75 — In-wall cord concealment per TV",
+      "$50 — Outlet upgrade or relocation",
     ],
   },
   {
-    name: "Fixture Refresh",
-    icon: Lightbulb,
-    price: "$350–$650",
+    name: "Home Office / Workout Room",
+    icon: Dumbbell,
+    price: "$500–$1,800",
     tier: "fast",
-    description: "Upgrade the room, not just the fixture. Multiple light and fan installs bundled for one clean transformation.",
+    description: "Turn any spare room into a purpose-built workspace or fitness zone. From wall-mounted monitors to built-in shelving and rubber flooring — we build the room around your routine.",
     includes: [
-      "2–3 light fixture installations",
-      "1 ceiling fan OR vanity light",
-      "Minor drywall patch & touch-up",
+      "Equipment assembly & placement",
+      "Wall-mounted monitor or TV setup",
+      "Built-in shelving or storage install",
+      "Lighting upgrade & outlet additions",
     ],
     upgrades: [
-      "Add dimmer switches — $40/each",
-      "Under-cabinet lighting — $150+",
+      "Rubber flooring install — $300+",
+      "Soundproofing panels — $200+",
     ],
   },
   {
-    name: "Living Room Upgrade",
-    icon: Sofa,
-    price: "$850–$1,800",
+    name: "Entertainment & Sound System",
+    icon: Monitor,
+    price: "$850–$2,500",
     tier: "mid",
-    description: "A full living room transformation. This isn't a task list — it's a finished room that feels intentional and designed.",
+    description: "A fully integrated entertainment setup — mounted TV, concealed wiring, surround sound speakers, and built-in shelving. One visit, one clean result.",
     includes: [
-      "TV mount + full concealment",
-      "Built-in shelving or media panel install",
-      "Accent lighting installation",
-      "Wall patch & professional finish",
+      "TV mount + full in-wall concealment",
+      "Surround sound speaker installation",
+      "Built-in shelving or media panel",
+      "Accent lighting & smart home integration",
     ],
     upgrades: [
-      "Custom floating shelves — $200+",
-      "Smart home integration — $150+",
+      "Custom entertainment center — $500+",
+      "Additional speaker zones — $200+/room",
     ],
   },
   {
-    name: "Bathroom Refresh",
+    name: "Bathroom Renovation",
     icon: Bath,
-    price: "$1,200–$2,500",
+    price: "$1,200–$5,000+",
     tier: "mid",
-    description: "Even partial bathroom upgrades feel like renovation. Multiple plumbing and fixture tasks share prep time, maximizing your value.",
+    description: "From a simple faucet swap to a complete spa-level gut renovation. Shower doors, showerheads, LED lighting, body jets, custom drains, built-in benches — we do it all.",
     includes: [
-      "Vanity installation",
-      "Toilet replacement",
-      "Mirror + lighting upgrade",
-      "Minor drywall repair & finish",
+      "Faucet & showerhead upgrade/install",
+      "Vanity, toilet & mirror replacement",
+      "Shower door & glass enclosure install",
+      "Custom tile work (subway, mosaic, marble)",
     ],
     upgrades: [
-      "Shower fixture upgrade — $300+",
-      "Tile backsplash — $400+",
+      "Body jets & digital controls — $600+",
+      "Built-in bench & niche — $400+",
+      "LED shower lighting — $250+",
+      "Heated floors — $500+",
     ],
   },
   {
-    name: "Kitchen Surface Upgrade",
+    name: "Kitchen Transformation",
     icon: Layers,
-    price: "$2,000–$5,000",
+    price: "$2,000–$8,000+",
     tier: "premium",
-    description: "Kitchen upgrades carry the highest perceived ROI. Tap into renovation psychology without full remodel complexity.",
+    description: "Kitchen upgrades carry the highest ROI. From countertop installs to custom cabinetry, kitchen islands, and premium finishes — epoxy, quartz, granite, or reclaimed wood.",
     includes: [
-      "Epoxy countertop installation",
-      "Backsplash installation",
-      "Under-cabinet lighting",
-      "Fixture refresh (faucet, hardware)",
+      "Countertop installation (quartz, granite, epoxy)",
+      "Custom cabinetry & hardware",
+      "Kitchen island build or upgrade",
+      "Backsplash, under-cabinet lighting & fixtures",
     ],
     upgrades: [
-      "Cabinet hardware swap — $200+",
-      "Custom shelving — $350+",
+      "Reclaimed wood accents — $300+",
+      "Custom epoxy resin finish — $500+",
+      "Faucet & sink upgrade — $250+",
     ],
   },
   {
-    name: "Custom Feature Wall System",
+    name: "Basement Conversion",
     icon: Flame,
-    price: "$2,800–$6,500+",
+    price: "$3,500–$12,000+",
     tier: "premium",
-    description: "Contractor-level capability. A complete feature wall anchored to aesthetic outcome, not labor hours. This is what sets us apart.",
+    description: "Turn your unfinished basement into the sanctuary, social area, bedroom, or workspace you need. Framing, drywall, flooring, lighting, and full finishing — we build it out completely.",
     includes: [
-      "Framed feature wall construction",
-      "Electric fireplace installation",
-      "Integrated accent lighting",
-      "TV mount + full concealment",
-      "Finish trim & paint-ready prep",
+      "Framing, insulation & drywall",
+      "LVP or tile flooring installation",
+      "Recessed & accent lighting throughout",
+      "Feature wall or entertainment center build",
+      "Trim, paint & professional finishing",
     ],
     upgrades: [
-      "Custom mantel — $400+",
-      "Stone or tile surround — $600+",
+      "Custom bar area — $1,500+",
+      "Full bathroom add — $3,000+",
+      "Surround sound system — $500+",
     ],
   },
 ];
 
 const pricingCatalog = [
   {
-    category: "Drywall & Wall Finishes",
-    color: "#C9A84C",
-    items: [
-      { code: "DW-A", service: "Drywall Patch + Finish", description: "Small repairs, seamless finish", price: "$250–$450" },
-      { code: "DW-B", service: "Full Wall Restoration", description: "Extensive repairs, prep for paint", price: "$400–$900" },
-      { code: "DW-D", service: "Architectural Finish", description: "High-end texture & detail", price: "$700–$1,400" },
-    ],
-  },
-  {
-    category: "Lighting & Electrical Systems",
-    color: "#D4A843",
-    items: [
-      { code: "LG-A", service: "Standard Fixture Install", description: "Light fixture or outlet install", price: "$200–$350" },
-      { code: "LG-B", service: "Integrated Lighting System", description: "Under-cabinet & feature lighting", price: "$400–$900" },
-      { code: "LG-C", service: "Architectural Lighting", description: "Custom lighting design & install", price: "$900–$2,000" },
-    ],
-  },
-  {
-    category: "Built-In & Feature Walls",
-    color: "#8B7355",
-    items: [
-      { code: "BI-A", service: "TV Mount & Concealment", description: "TV mounting & cable conceal", price: "$250–$450" },
-      { code: "BI-B", service: "Integrated Wall Unit", description: "Custom built-in shelving", price: "$600–$1,300" },
-      { code: "BI-C", service: "Custom Feature Wall", description: "Full media & feature wall", price: "$1,200–$3,500+" },
-    ],
-  },
-  {
-    category: "Bathrooms & Luxury Installs",
-    color: "#6B8E6B",
-    items: [
-      { code: "BR-A", service: "Fixture Replacement", description: "Toilets, vanities, mirrors", price: "$250–$600" },
-      { code: "BR-B", service: "Multi-Component Install", description: "Vanity, shower, multi-fixture", price: "$800–$1,800" },
-      { code: "BR-C", service: "Full Luxury Renovation", description: "Complete high-end bathroom", price: "$2,000–$5,000+" },
-    ],
-  },
-  {
-    category: "Epoxy & Specialty Surfaces",
-    color: "#7B68AE",
-    items: [
-      { code: "EP-A", service: "Small Epoxy Surface", description: "Counter or accent area", price: "$400–$900" },
-      { code: "EP-B", service: "Mid-Sized Epoxy Install", description: "Bars & countertops", price: "$900–$1,900" },
-      { code: "EP-C", service: "Custom Epoxy Solution", description: "Large, custom surfaces", price: "$2,000–$4,200+" },
-    ],
-  },
-  {
-    category: "Painting & Creative Walls",
-    color: "#C97B4C",
-    items: [
-      { code: "PW-A", service: "Touch-Up & Patch Paint", description: "Spot repairs & color match", price: "$150–$350" },
-      { code: "PW-B", service: "Full Room Paint", description: "Complete room painting, prep & finish", price: "$400–$900" },
-      { code: "PW-C", service: "Accent Wall / Mural", description: "Custom accent wall, wallpaper, or mural", price: "$500–$1,500+" },
-    ],
-  },
-  {
-    category: "Assembly & Setup",
-    color: "#4C8EC9",
-    items: [
-      { code: "AS-A", service: "Furniture Assembly", description: "Flat-pack assembly, single item", price: "$75–$200" },
-      { code: "AS-B", service: "Multi-Piece Assembly", description: "Full room furniture setup", price: "$200–$500" },
-      { code: "AS-C", service: "Cabinet & Floor Install", description: "Cabinet install, minor flooring", price: "$500–$1,200+" },
-    ],
-  },
-  {
-    category: "Hauling & Exterior",
+    category: "Moving Day Services",
     color: "#4CA8C9",
     items: [
-      { code: "HE-A", service: "Single Item Removal", description: "Appliance, mattress, or furniture", price: "$75–$175" },
-      { code: "HE-B", service: "Partial Load Hauling", description: "Multiple items, garage/room clear", price: "$200–$450" },
-      { code: "HE-C", service: "Full Junk-Out & Power Wash", description: "Complete cleanout + exterior wash", price: "$500–$1,200+" },
+      { code: "MV-A", service: "Packing & Unpacking", description: "Professional packing/unpacking assist", price: "$150–$400" },
+      { code: "MV-B", service: "Furniture Assembly", description: "Flat-pack or multi-piece assembly", price: "$75–$300" },
+      { code: "MV-C", service: "Full Move-In Setup", description: "Assembly, mounting, placement", price: "$300–$800" },
+    ],
+  },
+  {
+    category: "Entertainment & Speaker Systems",
+    color: "#8B7355",
+    items: [
+      { code: "AV-A", service: "TV Mount & Concealment", description: "Wall mount, cable hide & setup", price: "$175–$450" },
+      { code: "AV-B", service: "Surround Sound Install", description: "5.1/7.1 speaker system wiring", price: "$400–$900" },
+      { code: "AV-C", service: "Custom Entertainment Center", description: "Built-in media wall or shelving", price: "$800–$2,500+" },
+    ],
+  },
+  {
+    category: "Lighting & Electrical",
+    color: "#D4A843",
+    items: [
+      { code: "LG-A", service: "Fixture Install", description: "Light fixture, fan, or vanity light", price: "$150–$350" },
+      { code: "LG-B", service: "Outlet Upgrade", description: "Outlet relocation, GFCI, USB outlets", price: "$75–$200" },
+      { code: "LG-C", service: "Integrated Lighting System", description: "Under-cabinet, recessed, accent LED", price: "$400–$1,200" },
+      { code: "LG-D", service: "Architectural Lighting", description: "Custom design, feature lighting", price: "$900–$2,000+" },
+    ],
+  },
+  {
+    category: "Bathrooms & Plumbing",
+    color: "#6B8E6B",
+    items: [
+      { code: "BR-A", service: "Faucet & Showerhead Swap", description: "Upgrade fixtures, handles, drains", price: "$150–$400" },
+      { code: "BR-B", service: "Vanity & Toilet Replace", description: "Vanity, toilet, mirror, lighting", price: "$600–$1,500" },
+      { code: "BR-C", service: "Shower Door & Enclosure", description: "Frameless glass, sliding, hinged", price: "$500–$1,200" },
+      { code: "BR-D", service: "Full Bathroom Renovation", description: "Gut-to-gorgeous, tile, fixtures, all", price: "$2,000–$5,000+" },
+      { code: "BR-E", service: "Luxury Spa Build", description: "Jets, benches, LED, digital controls", price: "$4,000–$8,000+" },
+    ],
+  },
+  {
+    category: "Kitchen & Countertops",
+    color: "#C9A84C",
+    items: [
+      { code: "KT-A", service: "Faucet & Hardware Swap", description: "Faucet, handles, cabinet hardware", price: "$150–$400" },
+      { code: "KT-B", service: "Countertop Installation", description: "Quartz, granite, marble, or epoxy", price: "$1,200–$4,000" },
+      { code: "KT-C", service: "Kitchen Island Build", description: "Custom island with countertop", price: "$2,000–$5,000+" },
+      { code: "KT-D", service: "Custom Cabinetry", description: "New cabinets, refacing, or built-ins", price: "$1,500–$4,500+" },
+    ],
+  },
+  {
+    category: "Custom Finishes & Surfaces",
+    color: "#7B68AE",
+    items: [
+      { code: "CF-A", service: "Epoxy Resin Surface", description: "Counters, bar tops, tables", price: "$400–$2,500" },
+      { code: "CF-B", service: "Reclaimed Wood Feature", description: "Accent walls, shelving, mantels", price: "$300–$1,200" },
+      { code: "CF-C", service: "Custom Tile Work", description: "Subway, mosaic, marble, brick", price: "$500–$2,500+" },
+      { code: "CF-D", service: "Stone & Granite Work", description: "Marble, granite, onyx installs", price: "$800–$3,500+" },
+      { code: "CF-E", service: "Restorations", description: "Furniture, fixture, surface refinish", price: "$300–$1,500" },
+    ],
+  },
+  {
+    category: "Flooring & Walls",
+    color: "#C97B4C",
+    items: [
+      { code: "FW-A", service: "Paint — Room or Accent", description: "Full room, accent wall, touch-ups", price: "$150–$900" },
+      { code: "FW-B", service: "Wallpaper Removal", description: "Strip, prep, smooth finish", price: "$200–$600" },
+      { code: "FW-C", service: "Floor Sanding & Waxing", description: "Hardwood sand, stain, seal", price: "$400–$1,200" },
+      { code: "FW-D", service: "Carpet Steaming", description: "Deep clean, room or whole-home", price: "$100–$350" },
+      { code: "FW-E", service: "LVP / Tile Floor Install", description: "Luxury vinyl, tile, epoxy floor", price: "$500–$2,500+" },
+    ],
+  },
+  {
+    category: "Built-Ins & Organization",
+    color: "#4C8EC9",
+    items: [
+      { code: "BO-A", service: "Built-In Shelving", description: "Custom closet, pantry, or wall unit", price: "$400–$1,200" },
+      { code: "BO-B", service: "Custom Storage Solutions", description: "Garage, basement, utility storage", price: "$300–$900" },
+      { code: "BO-C", service: "Feature Wall Build", description: "Fireplace, media, accent wall", price: "$1,200–$3,500+" },
+    ],
+  },
+  {
+    category: "Windows, Blinds & Exterior",
+    color: "#6B7B8E",
+    items: [
+      { code: "WE-A", service: "Blinds & Shades Install", description: "Window blinds, shades, curtain rods", price: "$75–$300" },
+      { code: "WE-B", service: "Window Boxes & Shutters", description: "Decorative boxes, functional shutters", price: "$200–$600" },
+      { code: "WE-C", service: "Awning Installation", description: "Retractable or fixed awnings", price: "$400–$1,200" },
+      { code: "WE-D", service: "Window Replacement", description: "Single or multi-window install", price: "$300–$800/window" },
+    ],
+  },
+  {
+    category: "Room Conversions",
+    color: "#8B6B55",
+    items: [
+      { code: "RC-A", service: "Home Office Build", description: "Desk, shelving, lighting, wiring", price: "$500–$1,800" },
+      { code: "RC-B", service: "Workout Room Setup", description: "Equipment, flooring, mirrors, sound", price: "$500–$1,500" },
+      { code: "RC-C", service: "Basement Finishing", description: "Framing, drywall, floor, lighting", price: "$3,500–$12,000+" },
+      { code: "RC-D", service: "Full Room Renovation", description: "Complete space transformation", price: "$2,000–$6,000+" },
+    ],
+  },
+  {
+    category: "Drywall & Repairs",
+    color: "#9B8E7B",
+    items: [
+      { code: "DW-A", service: "Drywall Patch + Finish", description: "Small repairs, seamless finish", price: "$150–$450" },
+      { code: "DW-B", service: "Full Wall Restoration", description: "Extensive repairs, prep for paint", price: "$400–$900" },
+      { code: "DW-C", service: "Architectural Finish", description: "High-end texture & detail work", price: "$700–$1,400" },
     ],
   },
 ];
 
 function getTierLabel(tier: string) {
   switch (tier) {
-    case "fast": return { text: "Fast Cash", bg: "rgba(201,168,76,0.15)", color: "#C9A84C" };
+    case "fast": return { text: "Quick Win", bg: "rgba(201,168,76,0.15)", color: "#C9A84C" };
     case "mid": return { text: "Mid-Ticket Value", bg: "rgba(107,142,107,0.15)", color: "#6B8E6B" };
-    case "premium": return { text: "Premium Feature", bg: "rgba(123,104,174,0.15)", color: "#7B68AE" };
+    case "premium": return { text: "Premium Build", bg: "rgba(123,104,174,0.15)", color: "#7B68AE" };
     default: return { text: "", bg: "", color: "" };
   }
 }
@@ -220,10 +263,10 @@ export default function Services() {
             <span style={{ color: "#C9A84C" }}>Task Lists</span>
           </h1>
           <p className="text-white/75 text-lg max-w-2xl mx-auto mb-4">
-            We don't sell hours. We sell finished rooms, upgraded spaces, and transformations you can see and feel. Clear pricing, bundled value, professional results.
+            We don't sell hours. We sell finished rooms, upgraded spaces, and transformations you can see and feel. From moving day assembly to full basement conversions — clear pricing, bundled value, professional results.
           </p>
           <p className="text-white/50 text-sm max-w-lg mx-auto mb-8">
-            All prices include materials, labor & professional finishing. PHL Metro — Philly, Bucks County, Montgomery County, and surrounding areas.
+            All prices include materials, labor & professional finishing. PHL Metro — Philly, Bucks County, Montgomery County, Delaware County, and surrounding areas.
           </p>
           <Link href="/schedule">
             <Button
@@ -246,7 +289,7 @@ export default function Services() {
             <Badge variant="secondary" className="mb-4">Installation Packages</Badge>
             <h2 className="font-display text-4xl font-bold text-foreground mb-3">Choose Your Transformation</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Six clear packages. Each one is a finished outcome — not a line item. The menu filters itself: pick what matches your project and budget.
+              Six clear packages. Each one is a finished outcome — not a line item. Pick what matches your project and budget.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -262,7 +305,7 @@ export default function Services() {
                       : "bg-white dark:bg-charcoal border border-border"
                   }`}
                   style={isPremium ? { borderColor: "#C9A84C" } : {}}
-                  data-testid={`package-${pkg.name.toLowerCase().replace(/[\s&]/g, "-")}`}
+                  data-testid={`package-${pkg.name.toLowerCase().replace(/[\s&\/]/g, "-")}`}
                 >
                   <div className="flex items-start justify-between gap-3 mb-4">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: tier.bg }}>
@@ -303,7 +346,7 @@ export default function Services() {
                       className="w-full font-semibold mt-auto"
                       style={isPremium ? { background: "#C9A84C", color: "#1C1C1E" } : {}}
                       variant={isPremium ? "default" : "outline"}
-                      data-testid={`button-book-${pkg.name.toLowerCase().replace(/[\s&]/g, "-")}`}
+                      data-testid={`button-book-${pkg.name.toLowerCase().replace(/[\s&\/]/g, "-")}`}
                     >
                       Book This Package
                       <ArrowRight className="w-4 h-4 ml-2" />
@@ -331,7 +374,7 @@ export default function Services() {
               <Card
                 key={cat.category}
                 className="overflow-hidden border-border bg-white dark:bg-charcoal"
-                data-testid={`catalog-${cat.category.toLowerCase().replace(/[\s&]/g, "-")}`}
+                data-testid={`catalog-${cat.category.toLowerCase().replace(/[\s&,]/g, "-")}`}
               >
                 <div className="px-4 sm:px-6 py-4 flex items-center justify-between" style={{ background: cat.color }}>
                   <h3 className="font-display text-base sm:text-lg font-bold text-white">{cat.category}</h3>
@@ -404,7 +447,7 @@ export default function Services() {
                 <span style={{ color: "#C9A84C" }}>You Want a Finished Room.</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Nobody wakes up wanting a task list. You want a mounted TV that looks intentional, a bathroom that feels upgraded, a living room that makes guests say "wow." Our packages bundle labor around the outcomes you actually care about — so every dollar goes toward a finished result, not billable hours.
+                Nobody wakes up wanting a task list. You want a mounted TV that looks intentional, a bathroom that feels upgraded, a basement you can actually use. Our packages bundle labor around the outcomes you actually care about — so every dollar goes toward a finished result, not billable hours.
               </p>
               <div className="space-y-3">
                 {[
@@ -412,6 +455,7 @@ export default function Services() {
                   "One visit, one setup, multiple results",
                   "Clear pricing — no surprises at the end",
                   "Professional finishing on every detail",
+                  "From moving day to full renovations",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3">
                     <Star className="w-4 h-4 flex-shrink-0" style={{ color: "#C9A84C" }} />

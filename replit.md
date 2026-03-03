@@ -1,7 +1,7 @@
 # A-Team Repair Solutions — Installation & Repair Business Website
 
 ## Project Overview
-Full-stack customer-facing web app for A-Team Repair Solutions, a professional installation and repair business serving the Philadelphia metro area. Services structured as outcome-based packages (Mount & Secure, Fixture Refresh, Living Room Upgrade, Bathroom Refresh, Kitchen Surface Upgrade, Custom Feature Wall System) plus a detailed itemized pricing catalog.
+Full-stack customer-facing web app for A-Team Repair Solutions, a professional installation and repair business serving the Philadelphia metro area. Services structured as outcome-based packages covering moving day setup, home office/workout rooms, entertainment & sound, bathroom renovations, kitchen transformations, and basement conversions — plus a detailed 11-category itemized pricing catalog.
 
 ## Architecture
 
@@ -30,22 +30,25 @@ Full-stack customer-facing web app for A-Team Repair Solutions, a professional i
 - `/visualizer` — AI Space Visualizer (OpenAI image generation "Fun Magnet")
 
 ## Service Packages (6 Outcome-Based)
-1. **Mount & Secure** — $175–$325 (Fast Cash tier)
-2. **Fixture Refresh** — $350–$650 (Fast Cash tier)
-3. **Living Room Upgrade** — $850–$1,800 (Mid-Ticket tier)
-4. **Bathroom Refresh** — $1,200–$2,500 (Mid-Ticket tier)
-5. **Kitchen Surface Upgrade** — $2,000–$5,000 (Premium tier)
-6. **Custom Feature Wall System** — $2,800–$6,500+ (Premium tier)
+1. **Moving Day Peace of Mind** — $300–$800 (Quick Win tier)
+2. **Home Office / Workout Room** — $500–$1,800 (Quick Win tier)
+3. **Entertainment & Sound System** — $850–$2,500 (Mid-Ticket tier)
+4. **Bathroom Renovation** — $1,200–$5,000+ (Mid-Ticket tier)
+5. **Kitchen Transformation** — $2,000–$8,000+ (Premium tier)
+6. **Basement Conversion** — $3,500–$12,000+ (Premium tier)
 
-## Itemized Pricing Catalog (8 Categories)
-- Drywall & Wall Finishes (DW-A/B/D)
-- Lighting & Electrical Systems (LG-A/B/C)
-- Built-In & Feature Walls (BI-A/B/C)
-- Bathrooms & Luxury Installs (BR-A/B/C)
-- Epoxy & Specialty Surfaces (EP-A/B/C)
-- Painting & Creative Walls (PW-A/B/C)
-- Assembly & Setup (AS-A/B/C)
-- Hauling & Exterior (HE-A/B/C)
+## Itemized Pricing Catalog (11 Categories)
+- Moving Day Services (MV-A/B/C)
+- Entertainment & Speaker Systems (AV-A/B/C)
+- Lighting & Electrical (LG-A/B/C/D)
+- Bathrooms & Plumbing (BR-A/B/C/D/E)
+- Kitchen & Countertops (KT-A/B/C/D)
+- Custom Finishes & Surfaces (CF-A/B/C/D/E) — epoxy, reclaimed wood, tile, stone, restorations
+- Flooring & Walls (FW-A/B/C/D/E) — paint, wallpaper removal, floor sanding, carpet steaming, LVP
+- Built-Ins & Organization (BO-A/B/C)
+- Windows, Blinds & Exterior (WE-A/B/C/D)
+- Room Conversions (RC-A/B/C/D)
+- Drywall & Repairs (DW-A/B/C)
 
 ## SEO & Performance
 - **Dynamic page titles**: `useDocumentTitle` hook (`client/src/hooks/useDocumentTitle.ts`) sets unique `<title>` per page

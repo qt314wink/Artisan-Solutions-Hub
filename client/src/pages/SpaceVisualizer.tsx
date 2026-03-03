@@ -12,18 +12,20 @@ import { useToast } from "@/hooks/use-toast";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const services = [
-  "TV Mounting & Cable Concealment",
-  "Fixture Refresh (Lights & Fans)",
-  "Living Room Upgrade (Full Transformation)",
-  "Bathroom Refresh (Vanity, Toilet, Lighting)",
-  "Kitchen Surface Upgrade (Epoxy, Backsplash)",
-  "Custom Feature Wall & Fireplace",
-  "Accent Wall with LED Lighting",
-  "Full Room Paint & Refresh",
-  "Built-In Shelving System",
-  "Drywall Patch & Finish",
-  "Epoxy Countertop or Floor",
-  "Furniture Assembly & Setup",
+  "Moving Day Setup & Assembly",
+  "Home Office / Workout Room",
+  "Entertainment Center & Surround Sound",
+  "Bathroom Renovation (Tile, Shower, Vanity)",
+  "Kitchen Transformation (Countertops, Cabinetry)",
+  "Basement Conversion (Full Build-Out)",
+  "Custom Tile, Brick & Stone Work",
+  "Epoxy Resin & Custom Finishes",
+  "Paint, Wallpaper & Flooring",
+  "Windows, Blinds & Shutters",
+  "Built-Ins & Custom Cabinetry",
+  "Lighting & Electrical Upgrades",
+  "Faucet & Showerhead Upgrade",
+  "Reclaimed Wood & Restorations",
 ];
 
 interface VisualizationResult {
