@@ -13,6 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CheckCircle2, Phone, Mail, Home, Sparkles, Camera } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -50,6 +51,7 @@ const benefits = [
 ];
 
 export default function ShowMySpace() {
+  useDocumentTitle("Show My Space — Get a Free Project Assessment");
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
 

@@ -7,10 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Search, Clock, ArrowRight } from "lucide-react";
 import type { Article } from "@shared/schema";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const categories = ["All", "How-To", "Tips", "Guide"];
 
 export default function Articles() {
+  useDocumentTitle("Tips, Guides & Expert Advice — Philadelphia Home Improvement");
+
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -92,43 +95,41 @@ export default function Articles() {
           ) : filtered && filtered.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((article) => (
-                <Link key={article.id} href={`/articles/${article.slug}`}>
-                  <a className="block group h-full" data-testid={`article-card-${article.id}`}>
-                    <Card className="p-6 h-full flex flex-col bg-card border-border hover-elevate transition-all duration-200">
-                      <div className="flex items-center gap-2 mb-4 flex-wrap">
-                        <Badge variant="outline" className="text-xs">{article.category}</Badge>
-                        {article.featured && (
-                          <Badge className="text-xs" style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.3)" }}>
-                            Featured
-                          </Badge>
-                        )}
-                      </div>
-                      <h2 className="font-display text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                        {article.title}
-                      </h2>
-                      <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 flex-1">
-                        {article.excerpt}
-                      </p>
-                      <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
-                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                          <Clock className="w-3.5 h-3.5" />
-                          {article.readTime} min read
-                        </div>
-                        <div className="flex items-center gap-1 text-sm font-medium transition-colors" style={{ color: "#C9A84C" }}>
-                          Read Article <ArrowRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                      {article.tags && article.tags.length > 0 && (
-                        <div className="mt-3 flex flex-wrap gap-1">
-                          {article.tags.slice(0, 3).map((tag) => (
-                            <span key={tag} className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                              #{tag}
-                            </span>
-                          ))}
-                        </div>
+                <Link key={article.id} href={`/articles/${article.slug}`} className="block group h-full" data-testid={`article-card-${article.id}`}>
+                  <Card className="p-6 h-full flex flex-col bg-card border-border hover-elevate transition-all duration-200">
+                    <div className="flex items-center gap-2 mb-4 flex-wrap">
+                      <Badge variant="outline" className="text-xs">{article.category}</Badge>
+                      {article.featured && (
+                        <Badge className="text-xs" style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.3)" }}>
+                          Featured
+                        </Badge>
                       )}
-                    </Card>
-                  </a>
+                    </div>
+                    <h2 className="font-display text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                      {article.title}
+                    </h2>
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 flex-1">
+                      {article.excerpt}
+                    </p>
+                    <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <Clock className="w-3.5 h-3.5" />
+                        {article.readTime} min read
+                      </div>
+                      <div className="flex items-center gap-1 text-sm font-medium transition-colors" style={{ color: "#C9A84C" }}>
+                        Read Article <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                    {article.tags && article.tags.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-1">
+                        {article.tags.slice(0, 3).map((tag) => (
+                          <span key={tag} className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </Card>
                 </Link>
               ))}
             </div>

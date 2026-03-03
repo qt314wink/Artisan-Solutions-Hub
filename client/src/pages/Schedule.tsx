@@ -13,6 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Video, CheckCircle2, ExternalLink, Clock, Calendar } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -63,7 +64,17 @@ const howItWorks = [
   { step: "4", title: "Get Your Estimate", desc: "Receive a detailed written estimate within 24 hours of your call." },
 ];
 
+function getServiceFromUrl(): string {
+  const params = new URLSearchParams(window.location.search);
+  const service = params.get("service");
+  if (!service) return "";
+  const match = services.find((s) => s.toLowerCase().includes(service.toLowerCase().split(" package")[0].split(" (")[0]));
+  return match || "";
+}
+
 export default function Schedule() {
+  useDocumentTitle("Schedule a Free Video Estimate — Philadelphia");
+
   const [confirmed, setConfirmed] = useState<{ meetLink: string } | null>(null);
   const { toast } = useToast();
 
@@ -71,13 +82,15 @@ export default function Schedule() {
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split("T")[0];
 
+  const initialService = getServiceFromUrl();
+
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
       name: "",
       email: "",
       phone: "",
-      serviceType: "",
+      serviceType: initialService,
       preferredDate: "",
       preferredTime: "",
       notes: "",
@@ -233,7 +246,7 @@ export default function Schedule() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Service Type *</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger data-testid="select-schedule-service">
                             <SelectValue placeholder="Select a service..." />

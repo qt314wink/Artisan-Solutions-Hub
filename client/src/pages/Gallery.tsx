@@ -3,9 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { GalleryItem } from "@shared/schema";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const categories = ["All", "Custom Builds", "Countertops", "Lighting & Walls", "Epoxy & Flooring", "Lighting & Fixtures"];
 
@@ -51,8 +52,9 @@ function PanoramicCard({ item, onClick }: { item: GalleryItem; onClick: () => vo
       >
         <img
           src={item.beforeImage}
-          alt={`${item.title} - Before`}
+          alt={`${item.title} before renovation in Philadelphia`}
           className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
           style={{
             opacity: beforeOpacity + midBlend * 0.5,
             transition: hover ? "opacity 0.05s" : "opacity 0.4s",
@@ -61,8 +63,9 @@ function PanoramicCard({ item, onClick }: { item: GalleryItem; onClick: () => vo
         />
         <img
           src={item.afterImage}
-          alt={`${item.title} - After`}
+          alt={`${item.title} after renovation in Philadelphia`}
           className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
           style={{
             opacity: afterOpacity + midBlend * 0.3,
             transition: hover ? "opacity 0.05s" : "opacity 0.4s",
@@ -121,6 +124,7 @@ function PanoramicCard({ item, onClick }: { item: GalleryItem; onClick: () => vo
 }
 
 export default function Gallery() {
+  useDocumentTitle("Before & After Gallery — Philadelphia Home Transformations");
   const [activeCategory, setActiveCategory] = useState("All");
   const [selected, setSelected] = useState<GalleryItem | null>(null);
   const [showAfter, setShowAfter] = useState(true);
@@ -211,9 +215,10 @@ export default function Gallery() {
       </section>
 
       <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
-        <DialogContent className="max-w-5xl bg-charcoal-dark border-white/10 p-0 overflow-hidden">
+        <DialogContent className="max-w-5xl bg-charcoal-dark border-white/10 p-0 overflow-hidden" aria-describedby={undefined}>
           {selected && (
             <div>
+              <DialogTitle className="sr-only">{selected.title} — Before & After Comparison</DialogTitle>
               <div className="flex gap-2 justify-center pt-4 pb-2">
                 <button
                   className={`px-4 py-1.5 rounded-full text-xs font-bold transition-colors ${!showAfter ? "text-charcoal-dark" : "bg-white/10 text-white"}`}

@@ -47,9 +47,19 @@ Full-stack customer-facing web app for A-Team Repair Solutions, a professional i
 - Assembly & Setup (AS-A/B/C)
 - Hauling & Exterior (HE-A/B/C)
 
+## SEO & Performance
+- **Dynamic page titles**: `useDocumentTitle` hook (`client/src/hooks/useDocumentTitle.ts`) sets unique `<title>` per page
+- **robots.txt**: `client/public/robots.txt` — allows all crawlers
+- **sitemap.xml**: `client/public/sitemap.xml` — lists all public routes
+- **Lazy loading**: All gallery and project images use `loading="lazy"`
+- **Accessible gallery dialog**: Uses `DialogTitle` (sr-only) and `aria-describedby`
+- **Service-to-booking flow**: "Book This Package" on Services passes `?service=` param to Schedule, auto-filling the service dropdown
+- **Mobile pricing catalog**: Pricing table stacks vertically on small screens
+
 ## Key Files
 - `client/src/App.tsx` — Main router with all page routes
 - `client/src/components/Navbar.tsx` — Fixed top navigation
+- `client/src/hooks/useDocumentTitle.ts` — Dynamic SEO page title hook
 - `client/src/pages/` — All page components
 - `server/routes.ts` — All API endpoints + database seed function
 - `server/storage.ts` — DatabaseStorage class implementing IStorage

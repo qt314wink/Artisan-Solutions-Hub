@@ -8,6 +8,7 @@ import {
   PaintBucket, Layers, Shield, Camera, Sofa, Flame, LayoutGrid, Zap
 } from "lucide-react";
 import type { Testimonial, GalleryItem, Article } from "@shared/schema";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -53,6 +54,8 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function Home() {
+  useDocumentTitle();
+
   const { data: testimonials } = useQuery<Testimonial[]>({ queryKey: ["/api/testimonials"] });
   const { data: gallery } = useQuery<GalleryItem[]>({ queryKey: ["/api/gallery"] });
   const { data: articles } = useQuery<Article[]>({ queryKey: ["/api/articles"] });
@@ -140,15 +143,16 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {services.map((service) => (
-              <div
+              <Link
                 key={service.label}
-                className="group p-5 rounded-lg bg-white dark:bg-charcoal border border-border hover-elevate transition-all duration-200 cursor-pointer"
+                href="/services"
+                className="group p-5 rounded-lg bg-white dark:bg-charcoal border border-border hover-elevate transition-all duration-200 cursor-pointer block"
                 data-testid={`service-card-${service.label.toLowerCase().replace(/[\s&]/g, "-")}`}
               >
                 <service.icon className="w-7 h-7 mb-3" style={{ color: "#C9A84C" }} />
                 <h3 className="font-semibold text-sm text-foreground mb-1">{service.label}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{service.desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-10">
@@ -195,8 +199,9 @@ export default function Home() {
                 <div key={item.id} className="rounded-lg overflow-hidden aspect-square">
                   <img
                     src={item.afterImage}
-                    alt={item.title}
+                    alt={`${item.title} project result in Philadelphia`}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -204,8 +209,9 @@ export default function Home() {
                 {featuredGallery[2] && (
                   <img
                     src={featuredGallery[2].afterImage}
-                    alt={featuredGallery[2].title}
+                    alt={`${featuredGallery[2].title} project result in Philadelphia`}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 )}
               </div>
@@ -234,7 +240,7 @@ export default function Home() {
               {featuredGallery.map((item) => (
                 <div key={item.id} className="group rounded-lg overflow-hidden border border-border bg-card" data-testid={`gallery-preview-${item.id}`}>
                   <div className="relative aspect-video overflow-hidden">
-                    <img src={item.afterImage} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={item.afterImage} alt={`${item.title} before and after in Philadelphia`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                       <span className="text-white text-sm font-medium">View Before & After</span>
                     </div>
@@ -300,19 +306,17 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               {featuredArticles.map((article) => (
-                <Link key={article.id} href={`/articles/${article.slug}`}>
-                  <a className="block group" data-testid={`article-preview-${article.id}`}>
-                    <Card className="p-6 h-full bg-card hover-elevate transition-all duration-200">
-                      <Badge variant="outline" className="text-xs mb-3">{article.category}</Badge>
-                      <h3 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                        {article.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{article.excerpt}</p>
-                      <div className="mt-4 flex items-center gap-2 text-sm font-medium" style={{ color: "#C9A84C" }}>
-                        Read More <ArrowRight className="w-4 h-4" />
-                      </div>
-                    </Card>
-                  </a>
+                <Link key={article.id} href={`/articles/${article.slug}`} className="block group" data-testid={`article-preview-${article.id}`}>
+                  <Card className="p-6 h-full bg-card hover-elevate transition-all duration-200">
+                    <Badge variant="outline" className="text-xs mb-3">{article.category}</Badge>
+                    <h3 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{article.excerpt}</p>
+                    <div className="mt-4 flex items-center gap-2 text-sm font-medium" style={{ color: "#C9A84C" }}>
+                      Read More <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </Card>
                 </Link>
               ))}
             </div>
@@ -375,8 +379,8 @@ export default function Home() {
               <ul className="space-y-2">
                 {navLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href}>
-                      <a className="text-white/50 hover:text-white/80 text-sm transition-colors">{link.label}</a>
+                    <Link href={link.href} className="text-white/50 hover:text-white/80 text-sm transition-colors">
+                      {link.label}
                     </Link>
                   </li>
                 ))}
@@ -395,7 +399,7 @@ export default function Home() {
             </div>
           </div>
           <div className="pt-8 border-t border-white/10 text-center text-white/30 text-xs">
-            © 2026 A-Team Repair Solutions. All rights reserved. Licensed & Insured in Pennsylvania & New Jersey.
+            &copy; 2026 A-Team Repair Solutions. All rights reserved. Licensed & Insured in Pennsylvania & New Jersey.
           </div>
         </div>
       </footer>

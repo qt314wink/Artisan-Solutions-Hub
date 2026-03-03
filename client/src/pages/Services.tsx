@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, ArrowRight, Star, Video, Tv, Lightbulb, Sofa, Bath, Flame, Layers } from "lucide-react";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const packages = [
   {
@@ -193,6 +194,8 @@ function getTierLabel(tier: string) {
 }
 
 export default function Services() {
+  useDocumentTitle("Service Packages & Pricing — Philadelphia Installation & Repair");
+
   return (
     <div className="min-h-screen pt-16 bg-background">
       {/* Hero */}
@@ -285,7 +288,7 @@ export default function Services() {
                       ))}
                     </div>
                   )}
-                  <Link href="/schedule">
+                  <Link href={`/schedule?service=${encodeURIComponent(pkg.name + " Package (" + pkg.price + ")")}`}>
                     <Button
                       className="w-full font-semibold mt-auto"
                       style={isPremium ? { background: "#C9A84C", color: "#1C1C1E" } : {}}
@@ -320,32 +323,51 @@ export default function Services() {
                 className="overflow-hidden border-border bg-white dark:bg-charcoal"
                 data-testid={`catalog-${cat.category.toLowerCase().replace(/[\s&]/g, "-")}`}
               >
-                <div className="px-6 py-4 flex items-center justify-between" style={{ background: cat.color }}>
-                  <h3 className="font-display text-lg font-bold text-white">{cat.category}</h3>
-                  <span className="text-xs font-semibold text-white/80 uppercase tracking-wider">Price Range</span>
+                <div className="px-4 sm:px-6 py-4 flex items-center justify-between" style={{ background: cat.color }}>
+                  <h3 className="font-display text-base sm:text-lg font-bold text-white">{cat.category}</h3>
+                  <span className="text-xs font-semibold text-white/80 uppercase tracking-wider hidden sm:block">Price Range</span>
                 </div>
                 <div className="divide-y divide-border">
-                  <div className="grid grid-cols-12 px-6 py-2 bg-muted/50">
+                  <div className="hidden sm:grid grid-cols-12 px-4 sm:px-6 py-2 bg-muted/50">
                     <span className="col-span-2 text-xs font-semibold text-muted-foreground uppercase">Code</span>
                     <span className="col-span-3 text-xs font-semibold text-muted-foreground uppercase">Service</span>
                     <span className="col-span-4 text-xs font-semibold text-muted-foreground uppercase">Description</span>
                     <span className="col-span-3 text-xs font-semibold text-muted-foreground uppercase text-right">Price</span>
                   </div>
                   {cat.items.map((item) => (
-                    <div key={item.code} className="grid grid-cols-12 px-6 py-3 items-center hover:bg-muted/30 transition-colors">
-                      <div className="col-span-2">
-                        <span
-                          className="inline-block px-2 py-0.5 rounded text-xs font-bold text-white"
-                          style={{ background: cat.color }}
-                        >
-                          {item.code}
+                    <div key={item.code}>
+                      <div className="hidden sm:grid grid-cols-12 px-4 sm:px-6 py-3 items-center hover:bg-muted/30 transition-colors">
+                        <div className="col-span-2">
+                          <span
+                            className="inline-block px-2 py-0.5 rounded text-xs font-bold text-white"
+                            style={{ background: cat.color }}
+                          >
+                            {item.code}
+                          </span>
+                        </div>
+                        <span className="col-span-3 text-sm font-medium text-foreground">{item.service}</span>
+                        <span className="col-span-4 text-sm text-muted-foreground italic">{item.description}</span>
+                        <span className="col-span-3 text-sm font-bold text-right" style={{ color: cat.color }}>
+                          {item.price}
                         </span>
                       </div>
-                      <span className="col-span-3 text-sm font-medium text-foreground">{item.service}</span>
-                      <span className="col-span-4 text-sm text-muted-foreground italic">{item.description}</span>
-                      <span className="col-span-3 text-sm font-bold text-right" style={{ color: cat.color }}>
-                        {item.price}
-                      </span>
+                      <div className="sm:hidden px-4 py-3 hover:bg-muted/30 transition-colors">
+                        <div className="flex items-center justify-between mb-1">
+                          <div className="flex items-center gap-2">
+                            <span
+                              className="inline-block px-2 py-0.5 rounded text-xs font-bold text-white"
+                              style={{ background: cat.color }}
+                            >
+                              {item.code}
+                            </span>
+                            <span className="text-sm font-medium text-foreground">{item.service}</span>
+                          </div>
+                        </div>
+                        <p className="text-xs text-muted-foreground italic mb-1">{item.description}</p>
+                        <span className="text-sm font-bold" style={{ color: cat.color }}>
+                          {item.price}
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>

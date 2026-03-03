@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Zap, Upload, Sparkles, RefreshCcw, Download, ImageIcon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const services = [
   "TV Mounting & Cable Concealment",
@@ -32,6 +33,7 @@ interface VisualizationResult {
 }
 
 export default function SpaceVisualizer() {
+  useDocumentTitle("AI Space Visualizer — See Your Renovation Before It Happens");
   const [description, setDescription] = useState("");
   const [measurements, setMeasurements] = useState("");
   const [selectedService, setSelectedService] = useState("");
