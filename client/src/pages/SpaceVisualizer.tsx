@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Zap, Upload, Sparkles, RefreshCcw, Download, ImageIcon } from "lucide-react";
+import { Zap, Upload, Sparkles, RefreshCcw, Download, ImageIcon, Home, ChevronRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
@@ -85,6 +85,16 @@ export default function SpaceVisualizer() {
 
   return (
     <div className="min-h-screen pt-16 bg-background">
+      <div className="bg-charcoal-dark border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors" data-testid="link-breadcrumb-home">
+            <Home className="w-4 h-4" />
+            <span>Home</span>
+            <ChevronRight className="w-3 h-3 text-white/40" />
+            <span style={{ color: "#C9A84C" }}>AI Visualizer</span>
+          </Link>
+        </div>
+      </div>
       {/* Hero */}
       <section className="bg-charcoal-dark text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">

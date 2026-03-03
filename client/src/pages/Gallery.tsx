@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home } from "lucide-react";
+import { Link } from "wouter";
 import type { GalleryItem } from "@shared/schema";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
@@ -149,6 +150,16 @@ export default function Gallery() {
 
   return (
     <div className="min-h-screen pt-16 bg-background">
+      <div className="bg-charcoal-dark border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors" data-testid="link-breadcrumb-home">
+            <Home className="w-4 h-4" />
+            <span>Home</span>
+            <ChevronRight className="w-3 h-3 text-white/40" />
+            <span style={{ color: "#C9A84C" }}>Gallery</span>
+          </Link>
+        </div>
+      </div>
       <section className="bg-charcoal-dark text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <Badge className="mb-6" style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C", borderColor: "rgba(201,168,76,0.3)" }}>

@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, ArrowRight, Star, Video, Tv, Lightbulb, Sofa, Bath, Flame, Layers } from "lucide-react";
+import { CheckCircle2, ArrowRight, Star, Video, Tv, Lightbulb, Sofa, Bath, Flame, Layers, Home, ChevronRight } from "lucide-react";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const packages = [
@@ -198,6 +198,16 @@ export default function Services() {
 
   return (
     <div className="min-h-screen pt-16 bg-background">
+      <div className="bg-charcoal-dark border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors" data-testid="link-breadcrumb-home">
+            <Home className="w-4 h-4" />
+            <span>Home</span>
+            <ChevronRight className="w-3 h-3 text-white/40" />
+            <span style={{ color: "#C9A84C" }}>Services</span>
+          </Link>
+        </div>
+      </div>
       {/* Hero */}
       <section className="bg-charcoal-dark text-white py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
