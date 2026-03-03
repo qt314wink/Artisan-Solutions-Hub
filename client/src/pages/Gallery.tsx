@@ -302,7 +302,7 @@ export default function Gallery() {
       </section>
 
       <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
-        <DialogContent className="max-w-5xl bg-charcoal-dark border-white/10 p-0 overflow-hidden" aria-describedby={undefined}>
+        <DialogContent className="max-w-5xl max-h-[80vh] overflow-y-auto bg-charcoal-dark border-white/10 p-0 mx-4 sm:mx-auto my-[10vh]" aria-describedby={undefined}>
           {selected && (
             <div>
               <DialogTitle className="sr-only">{selected.title} — {selected.beforeImage === selected.afterImage ? "Portfolio Showcase" : "Before & After Comparison"}</DialogTitle>
@@ -320,12 +320,22 @@ export default function Gallery() {
                       PORTFOLIO
                     </div>
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 pb-4">
                     <Badge style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C" }} className="mb-3">{selected.category}</Badge>
                     <h2 className="font-display text-2xl font-bold text-white mb-2">{selected.title}</h2>
                     {selected.description && (
                       <p className="text-white/60 text-sm leading-relaxed">{selected.description}</p>
                     )}
+                  </div>
+                  <div className="px-6 pb-6">
+                    <button
+                      onClick={() => setSelected(null)}
+                      className="w-full py-3 rounded-lg text-sm font-bold transition-colors"
+                      style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.3)" }}
+                      data-testid="close-modal-button"
+                    >
+                      CLOSE
+                    </button>
                   </div>
                 </>
               ) : (
@@ -410,13 +420,23 @@ export default function Gallery() {
                     </div>
                   </div>
 
-                  <div className="p-6">
+                  <div className="p-6 pb-4">
                     <Badge style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C" }} className="mb-3">{selected.category}</Badge>
                     <h2 className="font-display text-2xl font-bold text-white mb-2">{selected.title}</h2>
                     {selected.description && (
                       <p className="text-white/60 text-sm leading-relaxed">{selected.description}</p>
                     )}
                     <p className="text-white/30 text-xs mt-3">Drag the slider left and right to compare before & after</p>
+                  </div>
+                  <div className="px-6 pb-6">
+                    <button
+                      onClick={() => setSelected(null)}
+                      className="w-full py-3 rounded-lg text-sm font-bold transition-colors"
+                      style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.3)" }}
+                      data-testid="close-modal-button"
+                    >
+                      CLOSE
+                    </button>
                   </div>
                 </>
               )}
