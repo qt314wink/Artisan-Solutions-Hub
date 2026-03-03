@@ -183,8 +183,10 @@ const pricingCatalog = [
       { code: "FW-A", service: "Paint — Room or Accent", description: "Full room, accent wall, touch-ups", price: "$150–$900" },
       { code: "FW-B", service: "Wallpaper Removal", description: "Strip, prep, smooth finish", price: "$200–$600" },
       { code: "FW-C", service: "Floor Sanding & Waxing", description: "Hardwood sand, stain, seal", price: "$400–$1,200" },
-      { code: "FW-D", service: "Carpet Steaming", description: "Deep clean, room or whole-home", price: "$100–$350" },
-      { code: "FW-E", service: "LVP / Tile Floor Install", description: "Luxury vinyl, tile, epoxy floor", price: "$500–$2,500+" },
+      { code: "FW-D", service: "Carpet Removal", description: "Full carpet tear-out & disposal", price: "$150–$500" },
+      { code: "FW-E", service: "Carpet Steaming", description: "Deep clean, room or whole-home", price: "$100–$350" },
+      { code: "FW-F", service: "LVP / Tile Floor Install", description: "Luxury vinyl, tile, epoxy floor", price: "$500–$2,500+" },
+      { code: "FW-G", service: "Paneling & Wall Covering", description: "Wood paneling, wainscoting, accent", price: "$300–$1,200" },
     ],
   },
   {
@@ -223,6 +225,35 @@ const pricingCatalog = [
       { code: "DW-A", service: "Drywall Patch + Finish", description: "Small repairs, seamless finish", price: "$150–$450" },
       { code: "DW-B", service: "Full Wall Restoration", description: "Extensive repairs, prep for paint", price: "$400–$900" },
       { code: "DW-C", service: "Architectural Finish", description: "High-end texture & detail work", price: "$700–$1,400" },
+    ],
+  },
+  {
+    category: "Carpentry, Trim & Doors",
+    color: "#6B5B3E",
+    items: [
+      { code: "CT-A", service: "Door Install or Replace", description: "Interior, exterior, pocket, barn", price: "$200–$600" },
+      { code: "CT-B", service: "Custom Trim & Molding", description: "Baseboards, casing, chair rail", price: "$200–$800" },
+      { code: "CT-C", service: "Crown Molding", description: "Room or whole-home install", price: "$300–$1,200" },
+      { code: "CT-D", service: "Custom Carpentry", description: "Shelving, mantels, built-in work", price: "$400–$2,000+" },
+    ],
+  },
+  {
+    category: "Decks & Outdoor",
+    color: "#5B7B4C",
+    items: [
+      { code: "DO-A", service: "Deck Repair & Refinish", description: "Board replace, sand, stain, seal", price: "$400–$1,200" },
+      { code: "DO-B", service: "Deck Build — Standard", description: "Pressure-treated wood deck", price: "$2,000–$5,000" },
+      { code: "DO-C", service: "Deck Build — Composite", description: "Trex or composite decking", price: "$3,500–$8,000+" },
+      { code: "DO-D", service: "Railing & Stair Install", description: "Wood, metal, or cable railing", price: "$500–$1,500" },
+    ],
+  },
+  {
+    category: "Appliance & Fixture Install",
+    color: "#5B6B8E",
+    items: [
+      { code: "AF-A", service: "Appliance Installation", description: "Dishwasher, range, fridge, hood", price: "$150–$400" },
+      { code: "AF-B", service: "Recessed Lighting Install", description: "Can lights, new-work or remodel", price: "$100–$250/light" },
+      { code: "AF-C", service: "Hidden Light Features", description: "Cove, toe-kick, backlit panels", price: "$300–$1,000" },
     ],
   },
 ];

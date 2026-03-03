@@ -37,18 +37,21 @@ Full-stack customer-facing web app for A-Team Repair Solutions, a professional i
 5. **Kitchen Transformation** — $2,000–$8,000+ (Premium tier)
 6. **Basement Conversion** — $3,500–$12,000+ (Premium tier)
 
-## Itemized Pricing Catalog (11 Categories)
+## Itemized Pricing Catalog (14 Categories)
 - Moving Day Services (MV-A/B/C)
 - Entertainment & Speaker Systems (AV-A/B/C)
 - Lighting & Electrical (LG-A/B/C/D)
 - Bathrooms & Plumbing (BR-A/B/C/D/E)
 - Kitchen & Countertops (KT-A/B/C/D)
 - Custom Finishes & Surfaces (CF-A/B/C/D/E) — epoxy, reclaimed wood, tile, stone, restorations
-- Flooring & Walls (FW-A/B/C/D/E) — paint, wallpaper removal, floor sanding, carpet steaming, LVP
+- Flooring & Walls (FW-A/B/C/D/E/F/G) — paint, wallpaper removal, floor sanding, carpet removal, carpet steaming, LVP, paneling
 - Built-Ins & Organization (BO-A/B/C)
 - Windows, Blinds & Exterior (WE-A/B/C/D)
 - Room Conversions (RC-A/B/C/D)
 - Drywall & Repairs (DW-A/B/C)
+- Carpentry, Trim & Doors (CT-A/B/C/D) — doors, trim, crown molding, custom carpentry
+- Decks & Outdoor (DO-A/B/C/D) — repair, standard build, composite, railing
+- Appliance & Fixture Install (AF-A/B/C) — appliance install, recessed lighting, hidden lights
 
 ## SEO & Performance
 - **Dynamic page titles**: `useDocumentTitle` hook (`client/src/hooks/useDocumentTitle.ts`) sets unique `<title>` per page
